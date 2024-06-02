@@ -1,4 +1,5 @@
 ﻿using Models;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
@@ -23,22 +24,24 @@ namespace Repositories
         }
         
 
-        public bool InsertInMongo(List<Infracao> infracoes)
+        public List<Infracao> SelectFromMongo()
         {
-            bool result = false;
+          
             try
             {
-                collection.InsertMany(infracoes);
-                result = true;
+                var projection = Builders<Infracao>.Projection.Exclude(x => x._id);
+                return collection.Find(_ => true).ToList();
+          
+               
             }
             catch (Exception e)
             {
 
                 Console.WriteLine(e.ToString());
             }
-            return result;
+            return new List<Infracao>();
         }
-
+       
 
     }
 }
