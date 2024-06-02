@@ -15,7 +15,7 @@ namespace Service
             _sqlrepository = new SQLRepository();
             _mongorepository = new MongoRepository();
         }
-        public List<Infracao> SelectFromMongo() { return _mongorepository.SelectFromMongo(); }
+        public bool InsertInMongo(List<Infracao> infracaoList) { return _mongorepository.InsertInMongo(infracaoList); }
         public List<Infracao> GetAll() { return _sqlrepository.GetAll(); }
     }
 }

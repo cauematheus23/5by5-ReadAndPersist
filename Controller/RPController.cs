@@ -11,6 +11,7 @@ namespace Controller
             _service = new RPServices();
         }
         public List<Infracao> GetAll() { return _service.GetAll(); }
-        public List<Infracao> SelectFromMongo() { return _service.SelectFromMongo(); }
+
+        public bool InsertInMongo(List<Infracao> infracaoList) { return _service.InsertInMongo(infracaoList); }
     }
 }
